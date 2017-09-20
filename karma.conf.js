@@ -33,7 +33,7 @@ module.exports = function(config) {
     basePath: "",
     frameworks: frameworks,
     files: [
-      { pattern: "node_modules/reflect-metadata/Reflect.js", include: true },
+      { pattern: "node_modules/core-js/client/shim.js", include: true },
       { pattern: "node_modules/bluebird/js/browser/bluebird.js", include: true },
       { pattern: "./test/**/**/**.test.ts", include: true },
       { pattern: '**/*.map', served: true, included: false, watched: true }
