@@ -4,8 +4,7 @@
 //  NOTICE: You are permitted to use, modify, and distribute this file
 //  in accordance with the terms of the license agreement accompanying it.
 // ------------------------------------------------------------------------------
-
-import { ITypeFilter } from "./ITypeFilter";
+import {ITypeFilter} from './ITypeFilter';
 
 /**
  * @private
@@ -121,9 +120,23 @@ export class TypeFilter implements ITypeFilter {
         let allFCQNs: string[] = [];
 
         let iLength: number = classVector.length;
+        /**
+         * get class name for ecmascript, support v3 upto v6
+         * @param {string} classDescriptor
+         */
+        let getQualifiedClassName = (classDescriptor: string) => {
+            // es pattern
+            let v3: RegExp = /function\ ([^\(]+)/;
+            let v6: RegExp = /class\ ([^\ ]+)/;
+            let result = classDescriptor.match(v3) || classDescriptor.match(v6);
+            if (result) {
+                return result[1];
+            } else {
+                return '';
+            }
+        }
         for (let i: number = 0; i < iLength; i++) {
-            // fqcn = getQualifiedClassName(classVector[i]);
-            fqcn = classVector[i].toString().match(/function\ ([^\(]+)/)[1];
+            fqcn = getQualifiedClassName(classVector[i].toString());
             allFCQNs[allFCQNs.length] = fqcn;
         }
 
