@@ -134,7 +134,7 @@ export class TypeFilter implements ITypeFilter {
             } else {
                 return '';
             }
-        }
+        };
         for (let i: number = 0; i < iLength; i++) {
             fqcn = getQualifiedClassName(classVector[i].toString());
             allFCQNs[allFCQNs.length] = fqcn;
