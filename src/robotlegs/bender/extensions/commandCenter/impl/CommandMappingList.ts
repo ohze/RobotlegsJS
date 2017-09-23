@@ -92,7 +92,9 @@ export class CommandMappingList implements ICommandMappingList {
     public addMapping(mapping: ICommandMapping): void {
         this._sorted = false;
         this.applyProcessors(mapping);
-        let oldMapping: ICommandMapping = this._mappingsByCommand.get(mapping.commandClass);
+        let oldMapping: ICommandMapping = this._mappingsByCommand.get(
+            mapping.commandClass
+        );
         if (oldMapping) {
             this.overwriteMapping(oldMapping, mapping);
         } else {
@@ -119,7 +121,9 @@ export class CommandMappingList implements ICommandMappingList {
      * @inheritDoc
      */
     public removeMappingFor(commandClass: Object): void {
-        let mapping: ICommandMapping = this._mappingsByCommand.get(commandClass);
+        let mapping: ICommandMapping = this._mappingsByCommand.get(
+            commandClass
+        );
         if (mapping) {
             this.removeMapping(mapping);
         }

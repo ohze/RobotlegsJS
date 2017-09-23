@@ -67,6 +67,8 @@ export class Pin {
      * Removes all pins
      */
     public releaseAll(): void {
-        this._instances.forEach((value: boolean, key: any) => this.release(key));
+        this._instances.forEach((value: boolean, key: any) =>
+            this.release(key)
+        );
     }
 }
